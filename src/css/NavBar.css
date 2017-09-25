@@ -1,0 +1,24 @@
+.is-tab {
+    align-items: center;
+    display: space-between;
+    line-height: 2.5;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    position: relative;
+    font-size: 1.5em;
+    color: #c1002e
+}
+
+.navbar-brand {
+    padding: 5px;
+    font-size: 2em;
+}
+
+.header-text {
+    color: #c1002e
+}
+
+.logo {
+    padding-right: 2px
+}
