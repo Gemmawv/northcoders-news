@@ -6,9 +6,10 @@ const articles = [{ title: 'I\'m an article', votes: 4 },
 { title: 'I\'m an article too', votes: 2 }];
 
 class ArticleList extends React.Component {
-  render () {
+  render() {
     return (
       <div id='ArticleList'>
+        <h3 className='title is-3'>All Articles</h3>
         {articles.map(article => <ArticleCard title={article.title} votes={article.votes} key={article.title} />)}
       </div>
     );
