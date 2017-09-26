@@ -1,43 +1,42 @@
 import React from 'react';
-import axios from 'axios';
-
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import * as actions from '../actions/actions';
 import ArticleCard from './ArticleCard';
 
-const path = 'http://localhost:3001/api/articles';
-
-// const articles = [{ title: 'I\'m an article', votes: 4 },
-// { title: 'I\'m another article', votes: 5 },
-// { title: 'I\'m an article too', votes: 2 }];
 
 class ArticleList extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      articles: [],
-      loading: false
-    };
-  }
   componentDidMount () {
-    axios.get(path)
-    .then(articles => {
-      this.setState(
-        {articles: articles.data.articles}
-      );
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    this.props.fetchArticles();
   }
-  
+
   render () {
-    const { articles} = this.state;
     return (
       <div id='ArticleList'>
         <h3 className='title is-3'>All Articles</h3>
-        {articles.map(article => <ArticleCard title={article.title} votes={article.votes} key={article.title} />)}
+        {this.props.articles.map(article => <ArticleCard title={article.title} votes={article.votes} key={article.title} />)}
       </div>
     );
   }
 }
 
-export default ArticleList;
+function mapDispatchToProps (dispatch) {
+  return {
+    fetchArticles: () => {
+      dispatch(actions.fetchArticles());
+    }
+  };
+}
+
+function mapStateToProps (state) {
+  return {
+    articles: state.articles
+  };
+}
+
+ArticleList.propTypes = {
+  fetchArticles: PropTypes.func.isRequired,
+  articles: PropTypes.array.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);
