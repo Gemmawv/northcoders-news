@@ -16,7 +16,7 @@ const NavBar = function () {
                     <a className="navbar-item is-tab is-active" href="/">
                         Home
                     </a>
-                    <a className="navbar-item is-tab" href="#">
+                    <a className="navbar-item is-tab" href="/topics">
                         All topics
                         </a>
                     <a className="navbar-item is-tab" href="#">
