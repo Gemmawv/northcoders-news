@@ -28,3 +28,16 @@ export function fetchTopics() {
       });
   };
 }
+
+export function fetchArticlesByTopic(topic) {
+  return (dispatch) => {
+    dispatch(fetchAllArticles.fetchArticlesRequest());
+    axios.get(`${ROOT}/topics/${topic}/articles`)
+      .then((res) => {
+        dispatch(fetchAllArticles.fetchArticlesSuccess(res.data.articlesByTopic));
+      })
+      .catch((err) => {
+        dispatch(fetchAllArticles.fetchArticlesError(err));
+      });
+  };
+}

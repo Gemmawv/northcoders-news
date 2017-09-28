@@ -7,7 +7,11 @@ import ArticleCard from './ArticleCard';
 
 class ArticleList extends React.Component {
   componentDidMount() {
-    this.props.fetchArticles();
+    if (this.props.match.params.topic_id) {
+      return this.props.fetchArticlesByTopic(this.props.match.params.topic_id);
+    } else {
+      return this.props.fetchArticles();
+    }
   }
 
   render() {
@@ -24,6 +28,9 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchArticles: () => {
       dispatch(actions.fetchArticles());
+    },
+    fetchArticlesByTopic: (topic) => {
+      dispatch(actions.fetchArticlesByTopic(topic));
     }
   };
 }
@@ -36,7 +43,9 @@ function mapStateToProps(state) {
 
 ArticleList.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
-  articles: PropTypes.array.isRequired
+  articles: PropTypes.array.isRequired,
+  fetchArticlesByTopic: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);
