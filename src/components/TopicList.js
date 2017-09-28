@@ -1,19 +1,42 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import * as actions from '../actions/actions';
 import TopicCard from './TopicCard';
 
-const topics = [{ title: 'Football' },
-{ title: 'Cooking' },
-{ title: 'Coding' }];
 
 class TopicList extends React.Component {
-    render () {
-        return (
-            <div id='TopicList'>
-                <h3 className='title is-3'>All Topics</h3>
-                {topics.map(topic => <TopicCard title={topic.title} key={topic.title} />)}
-            </div>
-        );
-    }
+  componentDidMount() {
+    this.props.fetchTopics();
+  }
+
+  render() {
+    return (
+      <div id='TopicList'>
+        <h3 className='title is-3'>All Topics</h3>
+        {this.props.topics.map(topic => <TopicCard title={topic.title} key={topic.title} />)}
+      </div>
+    );
+  }
 }
 
-export default TopicList;
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchTopics: () => {
+      dispatch(actions.fetchTopics());
+    }
+  };
+}
+
+function mapStateToProps(state) {
+  return {
+    topics: state.topics
+  };
+}
+
+TopicList.propTypes = {
+  fetchTopics: PropTypes.func.isRequired,
+  topics: PropTypes.array.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopicList);

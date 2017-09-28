@@ -2,11 +2,12 @@ import * as types from '../actions/types';
 
 const initialState = {
   articles: [],
+  topics: [],
   selectedTopic: null,
   loading: false
 };
 
-function reducer (prevState = initialState, action) {
+function reducer(prevState = initialState, action) {
   if (!action) return prevState;
 
   if (action.type === types.FETCH_ARTICLES_REQUEST) {
@@ -18,7 +19,7 @@ function reducer (prevState = initialState, action) {
   if (action.type === types.FETCH_ARTICLES_SUCCESS) {
     const newState = Object.assign({}, prevState);
     newState.articles = action.payload;
-    newState.loading = false; 
+    newState.loading = false;
     return newState;
   }
 
@@ -26,6 +27,28 @@ function reducer (prevState = initialState, action) {
     const newState = Object.assign({}, prevState);
     newState.error = action.payload;
     newState.articles = [];
+    newState.loading = false;
+    return newState;
+  }
+
+  if (action.type === types.FETCH_TOPICS_REQUEST) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = true;
+    return newState;
+  }
+
+  if (action.type === types.FETCH_TOPICS_SUCCESS) {
+    const newState = Object.assign({}, prevState);
+    newState.topics = action.payload;
+    newState.loading = false;
+
+    return newState;
+  }
+
+  if (action.type === types.FETCH_TOPICS_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.payload;
+    newState.topics = [];
     newState.loading = false;
     return newState;
   }

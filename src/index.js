@@ -19,14 +19,14 @@ const store = createStore(reducer, applyMiddleware(thunk, logger));
 const history = createBrowserHistory();
 
 ReactDOM.render(<Provider store={store}>
-                  <Router history={history}>
-                    <App>
-                    <Switch>
-                      <Route exact path='/' component={ArticleList} />
-                      <Route exact path='/articles' component={ArticleList} />
-                      <Route exact path='/topics' component={TopicList} />
+  <Router history={history}>
+    <App>
+      <Switch>
+        <Route exact path='/' component={ArticleList} />
+        <Route exact path='/articles' component={ArticleList} />
+        <Route exact path='/topics' component={TopicList} />
 
-                    </Switch>
-                    </App>
-                  </Router>
-                </Provider>, document.getElementById('app'));
+      </Switch>
+    </App>
+  </Router>
+</Provider>, document.getElementById('app'));

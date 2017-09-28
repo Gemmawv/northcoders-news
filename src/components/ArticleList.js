@@ -6,11 +6,11 @@ import ArticleCard from './ArticleCard';
 
 
 class ArticleList extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     this.props.fetchArticles();
   }
 
-  render () {
+  render() {
     return (
       <div id='ArticleList'>
         <h3 className='title is-3'>All Articles</h3>
@@ -20,7 +20,7 @@ class ArticleList extends React.Component {
   }
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     fetchArticles: () => {
       dispatch(actions.fetchArticles());
@@ -28,7 +28,7 @@ function mapDispatchToProps (dispatch) {
   };
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     articles: state.articles
   };
