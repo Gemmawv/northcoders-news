@@ -7,17 +7,13 @@ import ArticleCard from './ArticleCard';
 
 class ArticleList extends React.Component {
   componentDidMount() {
-    if (this.props.match.params.topic_id) {
-      return this.props.fetchArticlesByTopic(this.props.match.params.topic_id);
-    } else {
-      return this.props.fetchArticles();
-    }
+    this.props.match.params.topic_id ? this.props.fetchArticlesByTopic(this.props.match.params.topic_id) : this.props.fetchArticles();
   }
 
   render() {
     return (
       <div id='ArticleList'>
-        <h3 className='title is-3'>All Articles</h3>
+        {this.props.match.params.topic_id ? <h3 className='title is-3'>{`All ${this.props.match.params.topic_id} articles`}</h3> : <h3 className='title is-3'>All articles</h3>}
         {this.props.articles.map(article => <ArticleCard title={article.title} votes={article.votes} key={article.title} />)}
       </div>
     );
