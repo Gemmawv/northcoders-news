@@ -28,6 +28,7 @@ class ArticleList extends React.Component {
               title={article.title}
               votes={article.votes}
               key={article.title}
+              id={article._id}
             />
           )}
       </div>

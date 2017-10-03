@@ -12,6 +12,7 @@ import './css/font-awesome.css';
 import App from './components/App';
 import ArticleList from './components/ArticleList';
 import TopicList from './components/TopicList';
+import Article from './components/Article';
 
 import reducer from './reducer/reducer';
 
@@ -23,9 +24,10 @@ ReactDOM.render(<Provider store={store}>
     <App>
       <Switch>
         <Route exact path='/' component={ArticleList} />
-        <Route exact path='/articles' component={ArticleList} />
+        <Route path='/articles/:article_id' component={Article} />
         <Route exact path='/topics' component={TopicList} />
         <Route path='/topics/:topic_id/articles' component={ArticleList} />
+        <Route path='/articles/:article_id/comments' component={Article} />
       </Switch>
     </App>
   </Router>

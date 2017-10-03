@@ -2,6 +2,7 @@ import axios from 'axios';
 import { ROOT } from '../../config';
 import * as fetchAllArticles from './fetchAllArticles';
 import * as fetchAllTopics from './fetchAllTopics';
+import * as fetchSingleArticle from './fetchSingleArticle';
 
 export function fetchArticles() {
   return (dispatch) => {
@@ -12,6 +13,19 @@ export function fetchArticles() {
       })
       .catch((err) => {
         dispatch(fetchAllArticles.fetchArticlesError(err));
+      });
+  };
+}
+
+export function fetchArticle(articleId) {
+  return (dispatch) => {
+    dispatch(fetchSingleArticle.fetchArticleRequest());
+    axios.get(`${ROOT}/articles/${articleId}`)
+      .then((res) => {
+        dispatch(fetchSingleArticle.fetchArticleSuccess(res.data.article));
+      })
+      .catch((err) => {
+        dispatch(fetchSingleArticle.fetchArticleError(err));
       });
   };
 }

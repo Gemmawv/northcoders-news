@@ -4,7 +4,8 @@ const initialState = {
   articles: [],
   topics: [],
   selectedTopic: null,
-  loading: false
+  loading: false,
+  singleArticle: {}
 };
 
 function reducer(prevState = initialState, action) {
@@ -49,6 +50,27 @@ function reducer(prevState = initialState, action) {
     const newState = Object.assign({}, prevState);
     newState.error = action.payload;
     newState.topics = [];
+    newState.loading = false;
+    return newState;
+  }
+
+  if (action.type === types.FETCH_SINGLE_ARTICLE_REQUEST) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = true;
+    return newState;
+  }
+
+  if (action.type === types.FETCH_SINGLE_ARTICLE_SUCCESS) {
+    const newState = Object.assign({}, prevState);
+    newState.singleArticle = action.payload;
+    newState.loading = false;
+    return newState;
+  }
+
+  if (action.type === types.FETCH_SINGLE_ARTICLE_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.payload;
+    newState.singleArticle = {};
     newState.loading = false;
     return newState;
   }
