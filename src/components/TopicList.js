@@ -10,20 +10,24 @@ class TopicList extends React.Component {
   componentDidMount() {
     this.props.fetchTopics();
   }
-  
+
   render() {
     return (
       <div id='TopicList'>
-        <h3 className='title is-3'>All topics</h3>
-        {this.props.topics.map(topic => 
-          <Link 
-          to={`/topics/${topic.slug}/articles`}
-          key={topic.title}>
-            <TopicCard
-              title={topic.title}
-              key={topic.title} />
-          </Link>
-        )}
+        <div className='container'>
+          <h3 className='title is-3'>All topics</h3>
+        </div>
+        {this.props.topics.length === 0 ? 
+        <i className='fa fa-spinner fa-pulse fa-4x' aria-hidden='true'></i> 
+        : this.props.topics.map(topic =>
+            <Link
+              to={`/topics/${topic.slug}/articles`}
+              key={topic.title}>
+              <TopicCard
+                title={topic.title}
+                key={topic.title} />
+            </Link>
+          )}
       </div>
     );
   }

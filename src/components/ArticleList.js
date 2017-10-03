@@ -13,8 +13,23 @@ class ArticleList extends React.Component {
   render() {
     return (
       <div id='ArticleList'>
-        {this.props.match.params.topic_id ? <h3 className='title is-3'>{`All ${this.props.match.params.topic_id} articles`}</h3> : <h3 className='title is-3'>All articles</h3>}
-        {this.props.articles.map(article => <ArticleCard title={article.title} votes={article.votes} key={article.title} />)}
+        {this.props.match.params.topic_id ?
+          <div className='container'>
+            <h3 className='title is-3'>{`All ${this.props.match.params.topic_id} articles`}</h3>
+          </div>
+          : <div className='container'>
+            <h3 className='title is-3'>All articles</h3>
+          </div>
+        }
+        {this.props.articles.length === 0 ?
+          <i className='fa fa-spinner fa-pulse fa-4x' aria-hidden='true'></i>
+          : this.props.articles.map(article =>
+            <ArticleCard
+              title={article.title}
+              votes={article.votes}
+              key={article.title}
+            />
+          )}
       </div>
     );
   }
