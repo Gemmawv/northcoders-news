@@ -4,7 +4,6 @@ import '../css/NavBar.css';
 const NavBar = function () {
   return (
     <nav className='navbar'>
-
       <div className='navbar-brand'>
         <a className='navbar-item header-text is-centered' href="/">
           <img className="logo"
@@ -12,22 +11,30 @@ const NavBar = function () {
           Northcoders News
         </a>
       </div>
-      
-      <a className="navbar-item is-tab is-active" href="/">
-        Home
-      </a>
-      <a className="navbar-item is-tab" href="/topics">
-        All topics
-      </a>
-      <a className="navbar-item is-tab" href="/topics/football/articles">
-        Football
-      </a>
-      <a className="navbar-item is-tab" href="/topics/cooking/articles">
-        Cooking
-      </a>
-      <a className="navbar-item is-tab" href="/topics/coding/articles">
-        Coding
-      </a>
+      <div className="tabs is-centered is-fullwidth">
+        <ul>
+          <li className="is-active">
+            <a className="navbar-item is-tab" href="/">
+              Home
+            </a>
+          </li>
+          <li>
+            <a className="navbar-item is-tab" href="/topics">
+            All topics
+            </a></li>
+          <li>
+            <a className="navbar-item is-tab" href="/topics/football/articles">
+            Football
+            </a>
+          </li>
+          <li><a className="navbar-item is-tab" href="/topics/cooking/articles">
+            Cooking
+      </a></li>
+          <li> <a className="navbar-item is-tab" href="/topics/coding/articles">
+            Coding
+      </a></li>
+        </ul>
+      </div>
     </nav>
   );
 };
