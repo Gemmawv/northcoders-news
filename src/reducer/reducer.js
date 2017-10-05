@@ -5,7 +5,8 @@ const initialState = {
   topics: [],
   selectedTopic: null,
   loading: false,
-  singleArticle: {}
+  singleArticle: {},
+  comments: []
 };
 
 function reducer(prevState = initialState, action) {
@@ -71,6 +72,27 @@ function reducer(prevState = initialState, action) {
     const newState = Object.assign({}, prevState);
     newState.error = action.payload;
     newState.singleArticle = {};
+    newState.loading = false;
+    return newState;
+  }
+
+  if (action.type === types.FETCH_COMMENTS_REQUEST) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = true;
+    return newState;
+  }
+
+  if (action.type === types.FETCH_COMMENTS_SUCCESS) {
+    const newState = Object.assign({}, prevState);
+    newState.comments = action.payload;
+    newState.loading = false;
+    return newState;
+  }
+
+  if (action.type === types.FETCH_COMMENTS_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.payload;
+    newState.comments = [];
     newState.loading = false;
     return newState;
   }

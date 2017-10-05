@@ -3,6 +3,8 @@ import { ROOT } from '../../config';
 import * as fetchAllArticles from './fetchAllArticles';
 import * as fetchAllTopics from './fetchAllTopics';
 import * as fetchSingleArticle from './fetchSingleArticle';
+import * as fetchAllComments from './fetchAllComments';
+
 
 export function fetchArticles() {
   return (dispatch) => {
@@ -52,6 +54,19 @@ export function fetchArticlesByTopic(topic) {
       })
       .catch((err) => {
         dispatch(fetchAllArticles.fetchArticlesError(err));
+      });
+  };
+}
+
+export function fetchComments(article) {
+  return (dispatch) => {
+    dispatch(fetchAllComments.fetchCommentsRequest());
+    axios.get(`${ROOT}/articles/${article}/comments`)
+      .then((res) => {
+        dispatch(fetchAllComments.fetchCommentsSuccess(res.data.commentsForArticles));
+      })
+      .catch((err) => {
+        dispatch(fetchAllComments.fetchCommentsError(err));
       });
   };
 }

@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import PropTypes from 'prop-types';
+import CommentList from './CommentList';
 
 class Article extends React.Component {
   componentDidMount() {
     this.props.fetchArticle(this.props.match.params.article_id);
+    this.props.fetchComments(this.props.match.params.article_id);
   }
 
   render() {
@@ -18,12 +20,15 @@ class Article extends React.Component {
           </div>
           <div className='media-content'>
             <div className='content'>
-              <h3 className='title is-3'>{this.props.singleArticle.title}</h3>
-              <h5 className='title is-5'>By {this.props.singleArticle.created_by}</h5>
+              <h2 className='title is-3'>{this.props.singleArticle.title}</h2>
+              <h4 className='title is-5'>By {this.props.singleArticle.created_by}</h4>
               <p>{this.props.singleArticle.body}</p>
             </div>
           </div>
         </article>
+        <CommentList
+          comments={this.props.comments}
+        />
       </div>
     );
   }
@@ -33,20 +38,26 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchArticle: (singleArticle) => {
       dispatch(actions.fetchArticle(singleArticle));
+    },
+    fetchComments: (article) => {
+      dispatch(actions.fetchComments(article));
     }
   };
 }
 
 function mapStateToProps(state) {
   return {
-    singleArticle: state.singleArticle
+    singleArticle: state.singleArticle,
+    comments: state.comments
   };
 }
 
 Article.propTypes = {
-  singleArticle: PropTypes.object.isRequired,
   fetchArticle: PropTypes.func.isRequired,
-  match: PropTypes.object.isRequired
+  fetchComments: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
+  singleArticle: PropTypes.object.isRequired,
+  comments: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);
