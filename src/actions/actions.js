@@ -4,6 +4,7 @@ import * as fetchAllArticles from './fetchAllArticles';
 import * as fetchAllTopics from './fetchAllTopics';
 import * as fetchSingleArticle from './fetchSingleArticle';
 import * as fetchAllComments from './fetchAllComments';
+import * as fetchSingleUser from './fetchSingleUser';
 
 
 export function fetchArticles() {
@@ -19,12 +20,18 @@ export function fetchArticles() {
   };
 }
 
-export function fetchArticle(articleId) {
+export function fetchArticle(userId) {
   return (dispatch) => {
+    let article;
     dispatch(fetchSingleArticle.fetchArticleRequest());
-    axios.get(`${ROOT}/articles/${articleId}`)
+    axios.get(`${ROOT}/articles/${userId}`)
       .then((res) => {
-        dispatch(fetchSingleArticle.fetchArticleSuccess(res.data.article));
+        article = res.data.article;
+        axios.get(`${ROOT}/users/${article.created_by}`)
+        .then((res) => {
+          article.userImage = res.data.user[0].avatar_url;     
+          dispatch(fetchSingleArticle.fetchArticleSuccess(article));
+          });
       })
       .catch((err) => {
         dispatch(fetchSingleArticle.fetchArticleError(err));
@@ -67,6 +74,19 @@ export function fetchComments(article) {
       })
       .catch((err) => {
         dispatch(fetchAllComments.fetchCommentsError(err));
+      });
+  };
+}
+
+export function fetchUser(userId) {
+  return (dispatch) => {
+    dispatch(fetchSingleUser.fetchUserRequest());
+    axios.get(`${ROOT}/users/${userId}`)
+      .then((res) => {
+        dispatch(fetchSingleUser.fetchUserSuccess(res.data.user[0]));
+      })
+      .catch((err) => {
+        dispatch(fetchSingleUser.fetchUserError(err));
       });
   };
 }

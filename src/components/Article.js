@@ -20,9 +20,15 @@ class Article extends React.Component {
           </div>
           <div className='media-content'>
             <div className='content'>
-              <h2 className='title is-3'>{this.props.singleArticle.title}</h2>
-              <h4 className='title is-5'>By {this.props.singleArticle.created_by}</h4>
-              <p>{this.props.singleArticle.body}</p>
+              <h3 className='title is-3'>{this.props.singleArticle.title}</h3>
+              <h5 className='title is-5'>By {this.props.singleArticle.created_by}</h5>
+              <img className="avatar"
+                src={this.props.singleArticle.userImage}
+                alt="Avatar Image"
+                width="75"
+                height="20"
+              />
+              <h5 className='title is-5'>{this.props.singleArticle.body}</h5>
             </div>
           </div>
         </article>
@@ -48,7 +54,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     singleArticle: state.singleArticle,
-    comments: state.comments
+    comments: state.comments,
   };
 }
 

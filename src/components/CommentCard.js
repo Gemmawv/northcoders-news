@@ -11,7 +11,7 @@ const CommentCard = function (props) {
         </div>
         <div className='media-content'>
           <div className='content'>
-            <h5>{props.author} commented:</h5>
+            <h5 className='title is-5'>{props.author} commented:</h5>
             <p>{props.body}</p>
           </div>
         </div>
