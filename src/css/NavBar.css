@@ -10,15 +10,6 @@
     color: #c1002e
 }
 
-.navbar-brand {
-    padding: 5px;
-    font-size: 2em;
-}
-
-.header-text {
+#title-text {
     color: #c1002e
-}
-
-.logo {
-    padding-right: 2px
 }
