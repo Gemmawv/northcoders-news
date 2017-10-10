@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import PropTypes from 'prop-types';
 import CommentList from './CommentList';
+import '../css/Article.css';
 
 class Article extends React.Component {
   componentDidMount() {
@@ -12,29 +13,32 @@ class Article extends React.Component {
 
   render() {
     return (
-      <div className='box'>
-        <article className='media'>
-          <div className='media-left'>
-            <p>Upvotes:</p>
-            {this.props.singleArticle.votes}
-          </div>
-          <div className='media-content'>
-            <div className='content'>
-              <h3 className='title is-3'>{this.props.singleArticle.title}</h3>
-              <h5 className='title is-5'>By {this.props.singleArticle.created_by}</h5>
-              <img className="avatar"
-                src={this.props.singleArticle.userImage}
-                alt="Avatar Image"
-                width="75"
-                height="20"
-              />
-              <h5 className='title is-5'>{this.props.singleArticle.body}</h5>
+      <div>
+        <div className='box'>
+          <article className='media'>
+            <div className='media-left'>
+              <i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+              <p>Votes: {this.props.singleArticle.votes}
+              </p>
+              <i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
             </div>
-          </div>
-        </article>
-        <CommentList
-          comments={this.props.comments}
-        />
+            <div className='media-content'>
+              <div className='content'>
+                <h3 className='title is-3'>{this.props.singleArticle.title}</h3>
+                <h5 className='title is-5'>By {this.props.singleArticle.created_by}
+                  <img className="avatar"
+                    src={this.props.singleArticle.userImage}
+                    alt="Avatar Image"
+                  />
+                </h5>
+                <h5 className='title is-5'>{this.props.singleArticle.body}</h5>
+              </div>
+            </div>
+          </article>
+        </div>
+          <CommentList
+            comments={this.props.comments}
+          />
       </div>
     );
   }
