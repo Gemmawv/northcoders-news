@@ -12,7 +12,7 @@ const NavBar = function () {
               className="logo"
               src="https://cdn-images-1.medium.com/max/184/1*LdnSztHVYhhd8K8EqlgCJQ@2x.png" alt="Northcoders News logo" width="100" height="30" />
             </a>
-            <h1 className="title is-1 is-bold" id="title-text">
+            <h1 className="title is-1" id="title-text">
               <strong>Northcoders News</strong>
             </h1>
             <h2 className="subtitle is-3">
@@ -25,7 +25,7 @@ const NavBar = function () {
       <nav className='navbar'>
         <div className="tabs is-centered is-fullwidth">
           <ul>
-            <li className="is-active">
+            <li>
               <a className="navbar-item is-tab" href="/">
                 Home
               </a>
