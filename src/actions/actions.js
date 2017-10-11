@@ -5,7 +5,7 @@ import * as fetchAllTopics from './fetchAllTopics';
 import * as fetchSingleArticle from './fetchSingleArticle';
 import * as fetchAllComments from './fetchAllComments';
 import * as fetchSingleUser from './fetchSingleUser';
-
+import * as postNewComment from './postNewComment';
 
 export function fetchArticles() {
   return (dispatch) => {
@@ -82,9 +82,9 @@ export function fetchComments(article) {
         });
 
         Promise.all(newComments)
-        .then((comments) => {
-          dispatch(fetchAllComments.fetchCommentsSuccess(comments));
-        });
+          .then((comments) => {
+            dispatch(fetchAllComments.fetchCommentsSuccess(comments));
+          });
       })
       .catch((err) => {
         dispatch(fetchAllComments.fetchCommentsError(err));
@@ -101,6 +101,19 @@ export function fetchUser(userId) {
       })
       .catch((err) => {
         dispatch(fetchSingleUser.fetchUserError(err));
+      });
+  };
+}
+
+export function postComment(articleId, body) {
+  return (dispatch) => {
+    dispatch(postNewComment.postNewCommentRequest());
+    axios.post(`${ROOT}/articles/${articleId}/comments`, {body: body, created_by: 'northcoder'})
+      .then((res) => {
+        dispatch(postNewComment.postNewCommentSuccess(res.data.comment));
+      })
+      .catch((err) => {
+        dispatch(postNewComment.postNewCommentError(err));
       });
   };
 }

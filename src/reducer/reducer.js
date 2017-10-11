@@ -118,6 +118,26 @@ function reducer(prevState = initialState, action) {
     newState.loading = false;
     return newState;
   }
+  
+  if (action.type === types.POST_COMMENT_REQUEST) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = true;
+    return newState;
+  }
+
+  if (action.type === types.POST_COMMENT_SUCCESS) {
+    const newState = Object.assign({}, prevState);
+    newState.comments = prevState.comments.concat(action.payload);
+    newState.loading = false;
+    return newState;
+  }
+
+  if (action.type === types.POST_COMMENT_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.payload;
+    newState.loading = false;
+    return newState;
+  }
 
   return prevState;
 }

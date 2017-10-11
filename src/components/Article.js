@@ -28,14 +28,18 @@ class Article extends React.Component {
                 <h3 className='title is-3'>{this.props.singleArticle.title}</h3>
                 <article className="media">
                   <figure className="media-left">
-                  <img className="avatar"
-                    src={this.props.singleArticle.userImage}
-                    alt="Avatar Image"
-                  />
+                    <img className="avatar"
+                      src={this.props.singleArticle.userImage}
+                      alt="Avatar Image"
+                    />
                   </figure>
-                <h5 className='title is-5'>By {this.props.singleArticle.created_by}
-                </h5>
-                  </article>
+                  <div className="media-content">
+                    <div className="content">
+                      <h5 className='title is-5'>By {this.props.singleArticle.created_by}
+                      </h5>
+                    </div>
+                  </div>
+                </article>
 
                 <h5 className='title is-5'>{this.props.singleArticle.body}</h5>
               </div>
@@ -43,9 +47,11 @@ class Article extends React.Component {
             </div>
           </article>
         </div>
-          <CommentList
-            comments={this.props.comments}
-          />
+        <CommentList
+          comments={this.props.comments}
+          postComment={this.props.postComment}
+          articleId={this.props.match.params.article_id}
+        />
       </div>
     );
   }
@@ -58,6 +64,9 @@ function mapDispatchToProps(dispatch) {
     },
     fetchComments: (article) => {
       dispatch(actions.fetchComments(article));
+    },
+    postComment: (articleId, body) => {
+      dispatch(actions.postComment(articleId, body));
     }
   };
 }
@@ -74,7 +83,8 @@ Article.propTypes = {
   fetchComments: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
   singleArticle: PropTypes.object.isRequired,
-  comments: PropTypes.array.isRequired
+  comments: PropTypes.array.isRequired,
+  postComment: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

@@ -7,7 +7,10 @@ const CommentList = function (props) {
     return (
       <div id='CommentList'>
         <h2> Comments </h2>
-        <CommentForm/>
+        <CommentForm
+        postComment={props.postComment}
+        articleId={props.articleId}
+        />
         {props.comments.map(comment =>
           <CommentCard
             body={comment.body}
@@ -23,7 +26,9 @@ const CommentList = function (props) {
 };
 
 CommentList.propTypes = {
-  comments: PropTypes.array.isRequired
+  comments: PropTypes.array.isRequired,
+  postComment: PropTypes.func.isRequired,
+  articleId: PropTypes.string.isRequired
 };
 
 export default CommentList;
