@@ -27,6 +27,8 @@ class ArticleList extends React.Component {
             <ArticleCard
               title={article.title}
               votes={article.votes}
+              author={article.created_by}
+              avatar={article.avatar_url}
               key={article.title}
               id={article._id}
             />
