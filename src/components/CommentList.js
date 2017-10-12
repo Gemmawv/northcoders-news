@@ -16,7 +16,7 @@ const CommentList = function (props) {
             body={comment.body}
             votes={comment.votes}
             author={comment.created_by}
-            avatar={comment.userAvatar}
+            avatar={comment.avatar_url}
             key={comment._id}
             date={comment.created_at}
           />

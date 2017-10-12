@@ -29,7 +29,7 @@ class Article extends React.Component {
                 <article className="media">
                   <figure className="media-left">
                     <img className="avatar"
-                      src={this.props.singleArticle.userImage}
+                      src={this.props.singleArticle.avatar_url}
                       alt="Avatar Image"
                     />
                   </figure>
