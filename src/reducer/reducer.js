@@ -118,7 +118,7 @@ function reducer(prevState = initialState, action) {
     newState.loading = false;
     return newState;
   }
-  
+
   if (action.type === types.POST_COMMENT_REQUEST) {
     const newState = Object.assign({}, prevState);
     newState.loading = true;
@@ -139,6 +139,27 @@ function reducer(prevState = initialState, action) {
     return newState;
   }
 
+  if (action.type === types.DELETE_SINGLE_COMMENT_REQUEST) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = true;
+    return newState;
+  }
+
+  if (action.type === types.DELETE_SINGLE_COMMENT_SUCCESS) {
+    const newState = Object.assign({}, prevState);
+    newState.comments = newState.comments.filter((comment) => {
+      return comment._id !== action.payload;
+    });
+    newState.loading = false;
+    return newState;
+  }
+
+  if (action.type === types.DELETE_SINGLE_COMMENT_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.payload;
+    newState.loading = false;
+    return newState;
+  }
   return prevState;
 }
 

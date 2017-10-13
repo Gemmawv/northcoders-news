@@ -6,6 +6,7 @@ import * as fetchSingleArticle from './fetchSingleArticle';
 import * as fetchAllComments from './fetchAllComments';
 import * as fetchSingleUser from './fetchSingleUser';
 import * as postNewComment from './postNewComment';
+import * as deleteSingleComment from './deleteSingleComment';
 
 export function fetchArticles() {
   return (dispatch) => {
@@ -94,6 +95,19 @@ export function postComment(articleId, body) {
       })
       .catch((err) => {
         dispatch(postNewComment.postNewCommentError(err));
+      });
+  };
+}
+
+export function deleteComment(commentId) {
+  return (dispatch) => {
+    dispatch(deleteSingleComment.deleteCommentRequest());
+    axios.delete(`${ROOT}/comments/${commentId}`)
+      .then(() => {
+        dispatch(deleteSingleComment.deleteCommentSuccess(commentId));
+      })
+      .catch((err) => {
+        dispatch(deleteSingleComment.deleteCommentError(err));
       });
   };
 }

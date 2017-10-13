@@ -50,6 +50,7 @@ class Article extends React.Component {
         <CommentList
           comments={this.props.comments}
           postComment={this.props.postComment}
+          deleteComment={this.props.deleteComment}
           articleId={this.props.match.params.article_id}
         />
       </div>
@@ -67,6 +68,9 @@ function mapDispatchToProps(dispatch) {
     },
     postComment: (articleId, body) => {
       dispatch(actions.postComment(articleId, body));
+    },
+    deleteComment: (commentId) => {
+      dispatch(actions.deleteComment(commentId));
     }
   };
 }
@@ -84,7 +88,8 @@ Article.propTypes = {
   match: PropTypes.object.isRequired,
   singleArticle: PropTypes.object.isRequired,
   comments: PropTypes.array.isRequired,
-  postComment: PropTypes.func.isRequired
+  postComment: PropTypes.func.isRequired,
+  deleteComment: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);
