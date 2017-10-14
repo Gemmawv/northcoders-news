@@ -67,6 +67,7 @@ class Article extends React.Component {
           comments={this.props.comments}
           postComment={this.props.postComment}
           deleteComment={this.props.deleteComment}
+          voteComment={this.props.voteComment}
           articleId={this.props.match.params.article_id}
         />
       </div>
@@ -90,6 +91,9 @@ function mapDispatchToProps(dispatch) {
     },
     voteArticle: (articleId, vote) => {
       dispatch(actions.voteArticle(articleId, vote));
+    },
+    voteComment: (commentId, vote) => {
+      dispatch(actions.voteComment(commentId, vote));
     }
   };
 }
@@ -98,6 +102,7 @@ function mapStateToProps(state) {
   return {
     singleArticle: state.singleArticle,
     comments: state.comments,
+    singleComment: state.singleComment
   };
 }
 
@@ -109,7 +114,8 @@ Article.propTypes = {
   comments: PropTypes.array.isRequired,
   postComment: PropTypes.func.isRequired,
   deleteComment: PropTypes.func.isRequired,
-  voteArticle: PropTypes.func.isRequired
+  voteArticle: PropTypes.func.isRequired,
+  voteComment: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

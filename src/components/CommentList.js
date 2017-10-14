@@ -21,6 +21,7 @@ const CommentList = function (props) {
           key={comment._id}
           date={comment.created_at}
           deleteComment={props.deleteComment}
+          voteComment={props.voteComment}
         />
       )}
     </div>
@@ -31,6 +32,7 @@ CommentList.propTypes = {
   comments: PropTypes.array.isRequired,
   postComment: PropTypes.func.isRequired,
   deleteComment: PropTypes.func.isRequired,
+  voteComment: PropTypes.func.isRequired,
   articleId: PropTypes.string.isRequired
 };
 

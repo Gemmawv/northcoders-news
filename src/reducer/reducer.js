@@ -7,7 +7,8 @@ const initialState = {
   loading: false,
   singleArticle: {},
   comments: [],
-  singleUser: {}
+  singleUser: {},
+  singleComment: {}
 };
 
 function reducer(prevState = initialState, action) {
@@ -175,6 +176,26 @@ function reducer(prevState = initialState, action) {
   }
 
   if (action.type === types.VOTE_ON_SINGLE_ARTICLE_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.payload;
+    newState.loading = false;
+    return newState;
+  }
+
+  if (action.type === types.VOTE_ON_SINGLE_COMMENT_REQUEST) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = true;
+    return newState;
+  }
+
+  if (action.type === types.VOTE_ON_SINGLE_COMMENT_SUCCESS) {
+    const newState = Object.assign({}, prevState);
+    newState.singleComment = action.payload;
+    newState.loading = false;
+    return newState;
+  }
+
+  if (action.type === types.VOTE_ON_SINGLE_COMMENT_ERROR) {
     const newState = Object.assign({}, prevState);
     newState.error = action.payload;
     newState.loading = false;

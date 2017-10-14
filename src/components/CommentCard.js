@@ -7,7 +7,10 @@ class CommentCard extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.voteUp = this.voteUp.bind(this);
+    this.voteDown = this.voteDown.bind(this);
   }
+
   render() {
     return (
       <div className='box'>
@@ -15,6 +18,8 @@ class CommentCard extends React.Component {
           <div className='media-left'>
             <VoteButtons
               votes={this.props.votes}
+              voteUp={this.voteUp}
+              voteDown={this.voteDown}
             />
           </div>
 
@@ -53,6 +58,15 @@ class CommentCard extends React.Component {
       </div>
     );
   }
+
+  voteUp() {
+    this.props.voteComment(this.props.id, 'up');
+  }
+
+  voteDown() {
+    this.props.voteComment(this.props.id, 'down');
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     if (this.props.author === 'northcoder')
@@ -67,6 +81,7 @@ CommentCard.propTypes = {
   body: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   deleteComment: PropTypes.func.isRequired,
+  voteComment: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired
 };
 

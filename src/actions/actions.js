@@ -8,6 +8,7 @@ import * as fetchSingleUser from './fetchSingleUser';
 import * as postNewComment from './postNewComment';
 import * as deleteSingleComment from './deleteSingleComment';
 import * as voteOnArticle from './voteOnArticle';
+import * as voteOnComment from './voteOnComment';
 
 export function fetchArticles() {
   return (dispatch) => {
@@ -116,9 +117,22 @@ export function deleteComment(commentId) {
 export function voteArticle(articleId, vote) {
   return (dispatch) => {
     dispatch(voteOnArticle.voteOnArticleRequest());
-    axios.put(`${ROOT}/articles/${articleId}/?vote=${vote}`)
+    axios.put(`${ROOT}/articles/${articleId}?vote=${vote}`)
     .then((res) => {
       dispatch(voteOnArticle.voteOnArticleSuccess(res.data.article));
+    })
+    .catch((err) => {
+      dispatch(voteOnArticle.voteOnArticleError(err));
+    });
+  };
+}
+
+export function voteComment(commentId, vote) {
+  return (dispatch) => {
+    dispatch(voteOnComment.voteOnCommentRequest());
+    axios.put(`${ROOT}/comments/${commentId}?vote=${vote}`)
+    .then((res) => {
+      dispatch(voteOnComment.voteOnCommentSuccess(res.data.comment));
     })
     .catch((err) => {
       dispatch(voteOnArticle.voteOnArticleError(err));
