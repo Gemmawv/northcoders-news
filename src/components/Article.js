@@ -24,7 +24,6 @@ class Article extends React.Component {
 
   voteDown() {
     this.props.voteArticle(this.props.match.params.article_id, 'down');
-
   }
 
   render() {
@@ -35,7 +34,6 @@ class Article extends React.Component {
             <div className='media-left'>
               <VoteButtons
                 votes={this.props.singleArticle.votes}
-                voteArticle={this.props.voteArticle}
                 voteUp={this.voteUp}
                 voteDown={this.voteDown}
               />
