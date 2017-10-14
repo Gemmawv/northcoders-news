@@ -4,11 +4,27 @@ import * as actions from '../actions/actions';
 import PropTypes from 'prop-types';
 import CommentList from './CommentList';
 import '../css/Article.css';
+import VoteButtons from './VoteButtons';
 
 class Article extends React.Component {
+  constructor(props) {
+    super(props);
+    this.voteUp = this.voteUp.bind(this);
+    this.voteDown = this.voteDown.bind(this);
+  }
+
   componentDidMount() {
     this.props.fetchArticle(this.props.match.params.article_id);
     this.props.fetchComments(this.props.match.params.article_id);
+  }
+
+  voteUp() {
+    this.props.voteArticle(this.props.match.params.article_id, 'up');
+  }
+
+  voteDown() {
+    this.props.voteArticle(this.props.match.params.article_id, 'down');
+
   }
 
   render() {
@@ -17,10 +33,12 @@ class Article extends React.Component {
         <div className='box'>
           <article className='media'>
             <div className='media-left'>
-              <i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
-              <p>Votes: {this.props.singleArticle.votes}
-              </p>
-              <i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+              <VoteButtons
+                votes={this.props.singleArticle.votes}
+                voteArticle={this.props.voteArticle}
+                voteUp={this.voteUp}
+                voteDown={this.voteDown}
+              />
             </div>
             <div className='media-content'>
 
@@ -71,6 +89,9 @@ function mapDispatchToProps(dispatch) {
     },
     deleteComment: (commentId) => {
       dispatch(actions.deleteComment(commentId));
+    },
+    voteArticle: (articleId, vote) => {
+      dispatch(actions.voteArticle(articleId, vote));
     }
   };
 }
@@ -89,7 +110,8 @@ Article.propTypes = {
   singleArticle: PropTypes.object.isRequired,
   comments: PropTypes.array.isRequired,
   postComment: PropTypes.func.isRequired,
-  deleteComment: PropTypes.func.isRequired
+  deleteComment: PropTypes.func.isRequired,
+  voteArticle: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

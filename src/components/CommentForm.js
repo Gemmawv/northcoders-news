@@ -16,10 +16,10 @@ class CommentForm extends React.Component {
         <div className="level-left">
           <div className="level-item">
             <div className="field">
-              <p className="control">
+              <div className="control">
                 <input className="input is-large" type="text" placeholder="Enter new comment" onChange={this.handleChange} value={this.state.commentText}>
                 </input>
-              </p>
+              </div>
             </div>
           </div>
         </div>

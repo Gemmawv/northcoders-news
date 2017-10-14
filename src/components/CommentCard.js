@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../css/CommentCard.css';
+import VoteButtons from './VoteButtons';
 
 class CommentCard extends React.Component {
   constructor(props) {
@@ -12,10 +13,9 @@ class CommentCard extends React.Component {
       <div className='box'>
         <article className='media'>
           <div className='media-left'>
-            <i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
-            <p>Votes: {this.props.votes}
-            </p>
-            <i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+            <VoteButtons
+              votes={this.props.votes}
+            />
           </div>
 
           <div className='media-content'>
@@ -36,6 +36,7 @@ class CommentCard extends React.Component {
 
               <div className="media-right">
                 <button className="button is-outlined"
+                  type="button"
                   onClick={this.handleSubmit}
                 >
                   <span>Delete</span>

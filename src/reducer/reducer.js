@@ -160,6 +160,27 @@ function reducer(prevState = initialState, action) {
     newState.loading = false;
     return newState;
   }
+
+  if (action.type === types.VOTE_ON_SINGLE_ARTICLE_REQUEST) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = true;
+    return newState;
+  }
+
+  if (action.type === types.VOTE_ON_SINGLE_ARTICLE_SUCCESS) {
+    const newState = Object.assign({}, prevState);
+    newState.singleArticle = action.payload;
+    newState.loading = false;
+    return newState;
+  }
+
+  if (action.type === types.VOTE_ON_SINGLE_ARTICLE_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.payload;
+    newState.loading = false;
+    return newState;
+  }
+
   return prevState;
 }
 

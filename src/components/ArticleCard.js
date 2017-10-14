@@ -7,10 +7,17 @@ const ArticleCard = function (props) {
     <div className='box'>
       <article className='media'>
         <div className='media-left'>
-          <i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+          <button className="button is-success is-inverted"
+            type="button">
+            <i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+          </button>
+
           <p>Votes: {props.votes}
           </p>
-          <i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+          <button className="button is-danger is-inverted"
+            type="button">
+            <i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+          </button>
         </div>
 
         <div className='media-content'>
