@@ -8,7 +8,6 @@ const initialState = {
   singleArticle: {},
   comments: [],
   singleUser: {},
-  singleComment: {}
 };
 
 function reducer(prevState = initialState, action) {
@@ -45,7 +44,6 @@ function reducer(prevState = initialState, action) {
     const newState = Object.assign({}, prevState);
     newState.topics = action.payload;
     newState.loading = false;
-
     return newState;
   }
 
@@ -170,7 +168,13 @@ function reducer(prevState = initialState, action) {
 
   if (action.type === types.VOTE_ON_SINGLE_ARTICLE_SUCCESS) {
     const newState = Object.assign({}, prevState);
-    newState.singleArticle = action.payload;
+    newState.singleArticle = Object.assign({}, newState.singleArticle, { votes: action.payload.votes });
+    newState.articles = newState.articles.map((article) => {
+      if (article._id === action.payload._id) {
+        return Object.assign({}, article, { votes: action.payload.votes });
+      }
+      return article;
+    });
     newState.loading = false;
     return newState;
   }
@@ -190,7 +194,12 @@ function reducer(prevState = initialState, action) {
 
   if (action.type === types.VOTE_ON_SINGLE_COMMENT_SUCCESS) {
     const newState = Object.assign({}, prevState);
-    newState.singleComment = action.payload;
+    newState.comments = newState.comments.map((comment) => {
+      if (comment._id === action.payload._id) {
+        return Object.assign({}, comment, { votes: action.payload.votes });
+      }
+      return comment;
+    });
     newState.loading = false;
     return newState;
   }

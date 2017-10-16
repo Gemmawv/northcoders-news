@@ -56,7 +56,6 @@ class Article extends React.Component {
                     </div>
                   </div>
                 </article>
-
                 <h5 className='title is-5'>{this.props.singleArticle.body}</h5>
               </div>
 
@@ -101,8 +100,8 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     singleArticle: state.singleArticle,
-    comments: state.comments,
-    singleComment: state.singleComment
+    articles: state.articles,
+    comments: state.comments
   };
 }
 

@@ -61,6 +61,7 @@ class ArticleCard extends React.Component {
   }
 }
 
+
 ArticleCard.propTypes = {
   title: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
