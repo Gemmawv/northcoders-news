@@ -6,7 +6,7 @@ import CommentForm from './CommentForm';
 const CommentList = function (props) {
   return (
     <div id='CommentList'>
-      <h2> Comments </h2>
+      <h4 className='title is-4'> Comments </h4>
       <CommentForm
         postComment={props.postComment}
         articleId={props.articleId}
