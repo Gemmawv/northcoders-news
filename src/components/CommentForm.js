@@ -12,22 +12,22 @@ class CommentForm extends React.Component {
   }
   render() {
     return (
-      <form id="CommentForm" className="level" onSubmit={this.handleSubmit}>
-        <div className="level-left">
-          <div className="level-item">
-            <div className="field">
-              <div className="control">
-                <input className="input is-large" type="text" placeholder="Enter new comment" onChange={this.handleChange} value={this.state.commentText}>
-                </input>
-              </div>
+      <div className="box">
+        <form id="CommentForm" onSubmit={this.handleSubmit}>
+          <div className="field">
+            <div className="control">
+              <textarea className=" textarea is-danger is-medium" type="text" placeholder="Enter new comment" onChange={this.handleChange} value={this.state.commentText}>
+              </textarea>
             </div>
           </div>
-        </div>
-        <div className="level-right">
-          <input className="button" type="submit" value="Submit comment" >
-          </input>
-        </div>
-      </form>
+          <div className="field">
+            <div className="control">
+              <input className="button is-danger is-outlined" type="submit" value="Submit comment" >
+              </input>
+            </div>
+          </div>
+        </form>
+      </div>
     );
   }
 
@@ -41,6 +41,9 @@ class CommentForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.postComment(this.props.articleId, this.state.commentText);
+    this.setState({
+      commentText: ''
+    });
   }
 }
 
