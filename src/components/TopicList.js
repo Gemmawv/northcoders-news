@@ -17,9 +17,15 @@ class TopicList extends React.Component {
         <div className='container'>
           <h3 className='title is-3'>All topics</h3>
         </div>
-        {this.props.topics.length === 0 ? 
-        <i className='fa fa-spinner fa-pulse fa-4x' aria-hidden='true'></i> 
-        : this.props.topics.map(topic =>
+        {this.props.topics.length === 0 ?
+          <nav className="level">
+            <div className="level-item has-text-centered">
+              <div>
+                <i className='fa fa-spinner fa-pulse fa-4x' aria-hidden='true'></i>
+              </div>
+            </div>
+          </nav>
+          : this.props.topics.map(topic =>
             <Link
               to={`/topics/${topic.slug}/articles`}
               key={topic.title}>

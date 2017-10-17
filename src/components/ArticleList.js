@@ -10,20 +10,28 @@ class ArticleList extends React.Component {
   componentDidMount() {
     this.props.match.params.topic_id ? this.props.fetchArticlesByTopic(this.props.match.params.topic_id) : this.props.fetchArticles();
   }
-  
+
   render() {
     return (
       <div id='ArticleList'>
-        {this.props.match.params.topic_id ?
-          <div className='container'>
-            <h3 className='title is-3'>{`All ${this.props.match.params.topic_id} articles`}</h3>
-          </div>
-          : <div className='container'>
-            <h3 className='title is-3'>All articles</h3>
-          </div>
-        }
+        <div className="box">
+          {this.props.match.params.topic_id ?
+            <div className='container'>
+              <h3 className='title is-3'>{`All ${this.props.match.params.topic_id} articles`}</h3>
+            </div>
+            : <div className='container'>
+              <h3 className='title is-3'>All articles</h3>
+            </div>
+          }
+        </div>
         {this.props.articles.length === 0 ?
-          <i className='fa fa-spinner fa-pulse fa-4x' aria-hidden='true'></i>
+          <nav className="level">
+            <div className="level-item has-text-centered">
+              <div>
+                <i className='fa fa-spinner fa-pulse fa-4x is-centered' aria-hidden='true'></i>
+              </div>
+            </div>
+          </nav>
           : this.props.articles.map(article =>
             <ArticleCard
               title={article.title}
