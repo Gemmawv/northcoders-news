@@ -40,15 +40,20 @@ class CommentCard extends React.Component {
               </div>
 
               <div className="media-right">
-                <button className="button is-outlined"
-                  type="button"
-                  onClick={this.handleSubmit}
-                >
-                  <span>Delete</span>
-                  <span className="icon">
-                    <i className="fa fa-times"></i>
-                  </span>
-                </button>
+                {this.props.author === 'northcoder' ?
+                  <button
+                    className="button is-outlined"
+                    type="button"
+                    onClick={this.handleSubmit}
+                  >
+                    <span>Delete</span>
+                    <span className="icon">
+                      <i className="fa fa-times"></i>
+                    </span>
+                  </button>
+                  : <div>
+                  </div>
+                }
               </div>
 
             </article>
@@ -69,9 +74,7 @@ class CommentCard extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.props.author === 'northcoder')
-      return this.props.deleteComment(this.props.id);
-    else return alert('You can\'t delete other people\'s comments!');
+    this.props.deleteComment(this.props.id);
   }
 }
 

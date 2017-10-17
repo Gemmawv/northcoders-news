@@ -14,8 +14,10 @@ class TopicList extends React.Component {
   render() {
     return (
       <div id='TopicList'>
-        <div className='container'>
-          <h3 className='title is-3'>All topics</h3>
+        <div className="box">
+          <div className='container'>
+            <h3 className='title is-3'>All topics</h3>
+          </div>
         </div>
         {this.props.topics.length === 0 ?
           <nav className="level">

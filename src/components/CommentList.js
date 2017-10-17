@@ -6,6 +6,7 @@ import CommentForm from './CommentForm';
 const CommentList = function (props) {
   return (
     <div id='CommentList'>
+      <div className="box">
       <h4 className='title is-4'> Comments </h4>
       <CommentForm
         postComment={props.postComment}
@@ -24,6 +25,7 @@ const CommentList = function (props) {
           voteComment={props.voteComment}
         />
       )}
+      </div>
     </div>
   );
 };
