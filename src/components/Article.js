@@ -16,6 +16,7 @@ class Article extends React.Component {
   componentDidMount() {
     this.props.fetchArticle(this.props.match.params.article_id);
     this.props.fetchComments(this.props.match.params.article_id);
+    window.scrollTo(0, 0);
   }
 
   voteUp() {
@@ -26,7 +27,23 @@ class Article extends React.Component {
     this.props.voteArticle(this.props.match.params.article_id, 'down');
   }
 
+  isLoading() {
+    if (!Object.keys(this.props.singleArticle).length) return true;
+    return false;
+  }
+
   render() {
+    if (this.isLoading()) {
+      return (
+        <nav className="level">
+          <div className="level-item has-text-centered">
+            <div>
+              <i className='fa fa-spinner fa-pulse fa-4x is-centered' aria-hidden='true'></i>
+            </div>
+          </div>
+        </nav>
+      );
+    }
     return (
       <div>
         <div className='box'>
