@@ -15,6 +15,8 @@ import App from './components/App';
 import ArticleList from './components/ArticleList';
 import TopicList from './components/TopicList';
 import Article from './components/Article';
+import Footer from './components/Footer';
+
 
 import reducer from './reducer/reducer';
 
@@ -30,6 +32,7 @@ ReactDOM.render(<Provider store={store}>
         <Route exact path='/topics' component={TopicList} />
         <Route path='/topics/:topic_id/articles' component={ArticleList} />
       </Switch>
+      <Footer />
     </App>
   </Router>
 </Provider>, document.getElementById('app'));
