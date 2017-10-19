@@ -3,7 +3,6 @@ import * as types from '../actions/types';
 const initialState = {
   articles: [],
   topics: [],
-  selectedTopic: null,
   loading: false,
   singleArticle: {},
   comments: [],
