@@ -13,8 +13,7 @@ class VoteButtons extends React.Component {
         >
           <i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
         </button>
-        <p>Votes: {this.props.votes}
-        </p>
+        <p>Votes: {this.props.votes}</p>
         <button
           className="button is-danger is-inverted"
           type="button"

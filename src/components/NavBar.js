@@ -8,13 +8,13 @@ const NavBar = function () {
         <div className="hero-body">
           <div className="container has-text-centered">
             <a className='navbar-item header-text is-centered' href="/">
-              <img 
-              className="logo"
-              src="https://cdn-images-1.medium.com/max/184/1*LdnSztHVYhhd8K8EqlgCJQ@2x.png" alt="Northcoders News logo" width="100" height="30" />
+              <img
+                className="logo"
+                src="https://cdn-images-1.medium.com/max/184/1*LdnSztHVYhhd8K8EqlgCJQ@2x.png" alt="Northcoders News logo" width="100" height="30" />
+              <h1 className="title is-1" id="title-text">
+                <strong>Northcoders News</strong>
+              </h1>
             </a>
-            <h1 className="title is-1" id="title-text">
-              <strong>Northcoders News</strong>
-            </h1>
             <h2 className="subtitle is-3">
               News and conversation
             </h2>
@@ -42,12 +42,12 @@ const NavBar = function () {
             </li>
             <li>
               <a className="navbar-item is-tab" href="/topics/cooking/articles">
-              Cooking
+                Cooking
               </a>
             </li>
             <li>
               <a className="navbar-item is-tab" href="/topics/coding/articles">
-              Coding
+                Coding
               </a>
             </li>
           </ul>

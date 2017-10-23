@@ -15,6 +15,7 @@ class CommentCard extends React.Component {
     return (
       <div className='box'>
         <article className='media'>
+
           <div className='media-left'>
             <VoteButtons
               votes={this.props.votes}
@@ -24,41 +25,40 @@ class CommentCard extends React.Component {
           </div>
 
           <div className='media-content'>
-            <article className="media">
-
-              <figure className="media-left">
-                <img className="avatar"
-                  src={this.props.avatar}
-                  alt="Avatar Image"
-                />
-              </figure>
-
-              <div className="media-content">
-                <div className="content">
-                  <h5 className='title is-5'>{this.props.author} commented:</h5>
-                </div>
-              </div>
-
-              <div className="media-right">
-                {this.props.author === 'northcoder' ?
-                  <button
-                    className="button is-outlined"
-                    type="button"
-                    onClick={this.handleSubmit}
-                  >
-                    <span>Delete</span>
-                    <span className="icon">
-                      <i className="fa fa-times"></i>
-                    </span>
-                  </button>
-                  : <div>
+            <div className='content'>
+              <article className="media">
+                <figure className="media-left">
+                  <img className="avatar"
+                    src={this.props.avatar}
+                    alt="Avatar Image"
+                  />
+                </figure>
+                <div className="media-content">
+                  <div className="content">
+                    <h5 className='title is-5'>{this.props.author} commented:</h5>
                   </div>
-                }
-              </div>
-
-            </article>
-            <p>{this.props.body}</p>
+                </div>
+                <div className="media-right">
+                  {this.props.author === 'northcoder' ?
+                    <button
+                      className="button is-outlined"
+                      type="button"
+                      onClick={this.handleSubmit}
+                    >
+                      <span>Delete</span>
+                      <span className="icon">
+                        <i className="fa fa-times"></i>
+                      </span>
+                    </button>
+                    : <div>
+                    </div>
+                  }
+                </div>
+              </article>
+              <p>{this.props.body}</p>
+            </div>
           </div>
+
         </article>
       </div>
     );

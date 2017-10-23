@@ -52,9 +52,11 @@ class ArticleCard extends React.Component {
                   <div className="media-right">
                   </div>
                 </article>
+                
               </Link>
             </div>
           </div>
+
         </article>
       </div>
     );

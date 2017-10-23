@@ -45,7 +45,7 @@ class Article extends React.Component {
       );
     }
     return (
-      <div>
+      <div id='Article'>
         <div className='box'>
           <article className='media'>
             <div className='media-left'>
@@ -55,8 +55,8 @@ class Article extends React.Component {
                 voteDown={this.voteDown}
               />
             </div>
-            <div className='media-content'>
 
+            <div className='media-content'>
               <div className='content'>
                 <h3 className='title is-3'>{this.props.singleArticle.title}</h3>
                 <article className="media">
@@ -72,10 +72,14 @@ class Article extends React.Component {
                       </h5>
                     </div>
                   </div>
+                  <div className="media-right">
+                  </div>
                 </article>
                 <h5 className='title is-5'>{this.props.singleArticle.body}</h5>
               </div>
+            </div>
 
+            <div className="media-right">
             </div>
           </article>
         </div>
