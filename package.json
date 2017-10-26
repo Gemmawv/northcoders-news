@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/app.js",
+  
   "scripts": {
     "test": "mocha **/*.spec.js --compilers js:babel-core/register",
     "posttest": "npm run lint",
@@ -10,8 +11,10 @@
     "dev": "webpack-dev-server",
     "lint": "eslint ./"
   },
+  
   "author": "",
   "license": "ISC",
+  
   "devDependencies": {
     "axios": "^0.16.2",
     "babel-core": "^6.11.4",
@@ -31,6 +34,7 @@
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2"
   },
+  
   "dependencies": {
     "prop-types": "^15.5.10",
     "react": "^15.2.1",

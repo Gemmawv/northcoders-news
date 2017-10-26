@@ -1,4 +1,4 @@
 module.exports = {
-  ROOT: 'http://localhost:3001/api',
+  ROOT: 'https://nameless-sands-36123.herokuapp.com/api',
   USERNAME: 'northcoder'
 };
