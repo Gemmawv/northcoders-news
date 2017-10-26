@@ -8,7 +8,9 @@ import * as postNewComment from './postNewComment';
 import * as deleteSingleComment from './deleteSingleComment';
 import * as voteOnArticle from './voteOnArticle';
 import * as voteOnComment from './voteOnComment';
-import {ROOT} from '../config';
+import config from '../config';
+
+const {ROOT} = config[process.env.NODE_ENV];
 
 export function fetchArticles() {
   return (dispatch) => {
