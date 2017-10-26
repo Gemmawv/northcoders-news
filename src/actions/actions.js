@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { ROOT } from '../../config';
 import * as fetchAllArticles from './fetchAllArticles';
 import * as fetchAllTopics from './fetchAllTopics';
 import * as fetchSingleArticle from './fetchSingleArticle';
@@ -9,6 +8,7 @@ import * as postNewComment from './postNewComment';
 import * as deleteSingleComment from './deleteSingleComment';
 import * as voteOnArticle from './voteOnArticle';
 import * as voteOnComment from './voteOnComment';
+import {ROOT} from '../config';
 
 export function fetchArticles() {
   return (dispatch) => {
