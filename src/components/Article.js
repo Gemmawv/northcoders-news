@@ -63,7 +63,7 @@ class Article extends React.Component {
                   <figure className="media-left">
                     <img className="avatar"
                       src={this.props.singleArticle.avatar_url}
-                      alt="Avatar Image"
+                      alt="Avatar"
                     />
                   </figure>
                   <div className="media-content">

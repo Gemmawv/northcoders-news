@@ -4,7 +4,9 @@ import nock from 'nock';
 import { expect } from 'chai';
 import * as actions from '../src/actions/actions';
 import * as types from '../src/actions/types';
-import { ROOT } from '../config';
+import config from '../src/config';
+
+const {ROOT} = config[process.env.NODE_ENV];
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

@@ -30,7 +30,7 @@ class CommentCard extends React.Component {
                 <figure className="media-left">
                   <img className="avatar"
                     src={this.props.avatar}
-                    alt="Avatar Image"
+                    alt="Avatar"
                   />
                 </figure>
                 <div className="media-content">
