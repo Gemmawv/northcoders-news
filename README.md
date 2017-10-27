@@ -5,6 +5,10 @@ It has been built using React, Redux, Bulma and Axios.
 
 Northcoders News has articles which are divided into topics. Each article has user curated ratings and can be up or down voted. Users can add comments about an article. Any comments you post from your app will automatically be given the username 'northcoder'. Comments can also be up or down voted. You can delete your own comments (but not anyone else's!)
 
+You can view the deployed site here: https://northcodersnewsgv.herokuapp.com. 
+
+Alternatively, you can run this project locally by following the installation and setup instructions below.
+
 This repo contains all the front-end code for this project. The code for the back-end can be found here: https://github.com/Gemmawv/northcoders-news-api
 
 
@@ -29,11 +33,13 @@ git clone https://github.com/Gemmawv/northcoders-news
 npm install
 ```
 
-3. Open another terminal, navigate to the project folder and run:
+3. Make sure you have the back-end running locally by following the installation and setup instructions here: https://github.com/Gemmawv/northcoders-news-api
+
+4. Finally, open another terminal, navigate to the front-end project folder and run:
 ``` javascript 
-npm run dev
+npm start
 ```
-Once webpack has finished compiling, the application will be available at http://localhost:9090
+Once webpack has finished compiling, the application will open at http://localhost:3000
 
 
 # Running tests
