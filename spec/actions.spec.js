@@ -6,7 +6,7 @@ import * as actions from '../src/actions/actions';
 import * as types from '../src/actions/types';
 import config from '../src/config';
 
-const {ROOT} = config[process.env.NODE_ENV];
+const { ROOT } = config[process.env.NODE_ENV];
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

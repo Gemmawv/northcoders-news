@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import createBrowserHistory from 'history/createBrowserHistory';
@@ -16,7 +16,6 @@ import ArticleList from './components/ArticleList';
 import TopicList from './components/TopicList';
 import Article from './components/Article';
 import Footer from './components/Footer';
-
 
 import reducer from './reducer/reducer';
 

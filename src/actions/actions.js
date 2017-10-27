@@ -10,7 +10,7 @@ import * as voteOnArticle from './voteOnArticle';
 import * as voteOnComment from './voteOnComment';
 import config from '../config';
 
-const {ROOT} = config[process.env.NODE_ENV];
+const { ROOT } = config[process.env.NODE_ENV];
 
 export function fetchArticles() {
   return (dispatch) => {
